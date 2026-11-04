@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "primero" do |vmHost1|
     vmHost1.vm.box = "ubuntu/jammy64"
     vmHost1.vm.hostname = "VM1-Grupo-RedHat"
-    vmHost1.vm.network "private_network", :name => '', ip: "192.168.56.5"
+    vmHost1.vm.network "private_network", ip: "192.168.56.5"
     
     # Comparto la carpeta del host donde estoy parado contra la vm
     vmHost1.vm.synced_folder 'compartido_Host1/', '/home/vagrant/compartido', 
@@ -50,13 +50,15 @@ Vagrant.configure("2") do |config|
       #vmHost2.vm.box = "generic/rhel9"
       vmHost2.vm.box = "generic/fedora39"
       vmHost2.vm.hostname = "VM2-Grupo-RedHat"
-      vmHost2.vm.network "private_network", :name => '', ip: "192.168.56.6"
+      vmHost2.vm.network "private_network", ip: "192.168.56.6"
       
       # Comparto la carpeta del host donde estoy parado contra la vm
       vmHost2.vm.synced_folder 'compartido_Host2/', '/home/vagrant/compartido'
   
     # Agrega la key Privada de ssh en .vagrant/machines/default/virtualbox/private_key
     vmHost2.ssh.insert_key = true
+    vmHost2.ssh.password = "vagrant"
+    vmHost2.ssh.username = "vagrant"
     # Agrego un nuevo disco
     vmHost2.vm.disk :disk, size: "1GB", name: "#{vmHost2.vm.hostname}_extra_storage"
     vmHost2.vm.disk :disk, size: "2GB", name: "#{vmHost2.vm.hostname}_extra_storage2"
@@ -74,7 +76,7 @@ Vagrant.configure("2") do |config|
     
     
     # Puedo Ejecutar un script que esta en un archivo
-    vmHost2.vm.provision "shell", path: "script_Enable_ssh_password.sh"
+    #vmHost2.vm.provision "shell", path: "script_Enable_ssh_password.sh"
     vmHost2.vm.provision "shell", privileged: false, path: "script_Fix_history.sh"
   end
 end
