@@ -1,7 +1,11 @@
 ---
 # tasks file for Alta_Usuarios_RedHat
 
+<<<<<<< HEAD
 - name: Crear Grupo
+=======
+- name: Crear grupo RedHat
+>>>>>>> 41497c91757e4c39fcb213b0221d22fac8e7f77e
   group:
     name: "{{ Nombre_Grupo }}"
     state: present

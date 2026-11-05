@@ -11,9 +11,15 @@
     - vars/main.yml
 
   tasks:
-    - include_role:
-        name: TP_INI
+    -name: Configuracion inicial
+     hosts : testing,produccion
+     become: yes
+     tasks:
+        - name: Ejecutar rol TP_INI
+          include_role:
+              name: TP_INI
 
+<<<<<<< HEAD
     - include_role:
         name: Alta_usuarios_RedHat
 
@@ -22,7 +28,22 @@
 
     - include_role:
         name: Instala-tools_RedHat
+=======
+    -name: Alta de usuarios RedHat
+     hosts: produccion
+     become: yes
+     tasks:
+        - name: Ejecutar rol Alta_Usuarios_RedHat
+          include_role:
+            name: Alta_Usuarios_RedHat
 
-    - name: "Otra tarea"
+    -include_role:
+        name: sudoers_RedHat
+
+    -include_role:
+        name: instala_tools_RedHat
+>>>>>>> 41497c91757e4c39fcb213b0221d22fac8e7f77e
+
+    -name: "Otra tarea"
       debug:
         msg: "Despues de la ejecucion de los roles"
