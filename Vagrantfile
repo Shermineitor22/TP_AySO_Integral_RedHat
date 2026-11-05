@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
     vmHost1.vm.network "private_network", ip: "192.168.56.5"
     
     # Comparto la carpeta del host donde estoy parado contra la vm
-    vmHost1.vm.synced_folder 'compartido_Host1/', '/home/vagrant/compartido', 
+    vmHost1.vm.synced_folder 'compartido/', '/home/vagrant/compartido', 
     owner: 'vagrant', group: 'vagrant' 
 
       # Agrega la key Privada de ssh en .vagrant/machines/default/virtualbox/private_key
@@ -33,7 +33,8 @@ Vagrant.configure("2") do |config|
       vmHost1.vm.provision "shell", privileged: false, path: "script_Fix_history.sh"
       vmHost1.vm.provision "shell", path: "instala_paquetes.sh"
       vmHost1.vm.provision "shell", path: "configurar_lvm_ubuntu.sh"
-
+      vmHost1.vm.provision "shell", path: "Bash_script/alta_usuarios/alta_usuarios.sh", args: "Bash_script/alta_usuarios/lista_usuarios.txt"
+      vmHost1.vm.provision "shell", path: "Bash_script/check_url/check_URL.sh", args: "Bash_script/check_url/lista_urls.txt"
       
       #vmHost1.vm.provision "shell", privileged: false, inline: <<-SHELL
       # Los comandos aca se ejecutan como vagrant
@@ -55,7 +56,7 @@ Vagrant.configure("2") do |config|
       vmHost2.vm.network "private_network", ip: "192.168.56.6"
       
       # Comparto la carpeta del host donde estoy parado contra la vm
-      vmHost2.vm.synced_folder 'compartido_Host2/', '/home/vagrant/compartido'
+      vmHost2.vm.synced_folder 'compartido/', '/home/vagrant/compartido'
   
     # Agrega la key Privada de ssh en .vagrant/machines/default/virtualbox/private_key
     vmHost2.ssh.insert_key = true
@@ -80,5 +81,5 @@ Vagrant.configure("2") do |config|
     # Puedo Ejecutar un script que esta en un archivo
     vmHost2.vm.provision "shell", path: "configurar_lvm_fedora.sh"
     vmHost2.vm.provision "shell", privileged: false, path: "script_Fix_history.sh"
-  end
+   end
 end
