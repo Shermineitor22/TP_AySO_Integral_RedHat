@@ -2,7 +2,8 @@ version: '3'
 
 services:
     web:
-      image: castrojuan/tp-div_313_grupo_redhat:latest 
+      image: #castrojuan/tp-div_313_grupo_redhat:latest
+             mirkoszychowski/tp-div_313_grupo_redhat:latest
       ports:
           - "8081:80"
       volumes:
