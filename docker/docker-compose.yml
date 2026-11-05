@@ -3,8 +3,13 @@ version: '3'
 services:
     web:
       image: #castrojuan/tp-div_313_grupo_redhat:latest
+<<<<<<< HEAD
              #mirkoszychowski/tp-div_313_grupo_redhat:latest
              shermineitor22/tp-div_313_grupo_redhat:latest
+=======
+             mirkoszychowski/tp-div_313_grupo_redhat:latest
+             #nachotena96/tp-div_313_grupo_redhat:latest
+>>>>>>> 7bfcb41 (Agregando cosas)
       ports:
           - "8081:80"
       volumes:
