@@ -33,8 +33,8 @@ Vagrant.configure("2") do |config|
       vmHost1.vm.provision "shell", privileged: false, path: "script_Fix_history.sh"
       vmHost1.vm.provision "shell", path: "instala_paquetes.sh"
       vmHost1.vm.provision "shell", path: "configurar_lvm_ubuntu.sh"
-      vmHost1.vm.provision "shell", path: "Bash_script/alta_usuarios/alta_usuarios.sh", args: "Bash_script/alta_usuarios/lista_usuarios.txt"
-      vmHost1.vm.provision "shell", path: "Bash_script/check_url/check_URL.sh", args: "Bash_script/check_url/lista_urls.txt"
+      vmHost1.vm.provision "shell", path: "Bash_script/alta_usuarios/alta_usuarios.sh", args: "vagrant/Bash_script/alta_usuarios/lista_usuarios.txt"
+      vmHost1.vm.provision "shell", path: "Bash_script/check_url/check_URL.sh", args: "vagrant/Bash_script/check_url/lista_urls.txt"
       
       #vmHost1.vm.provision "shell", privileged: false, inline: <<-SHELL
       # Los comandos aca se ejecutan como vagrant
@@ -98,7 +98,7 @@ Vagrant.configure("2") do |config|
 
     # Provisionamiento automático al levantar la máquina
     vmHost2.vm.provision "shell", inline: <<-SHELL
-      dnf install -y python3-six
+      dnf install -y python3-six python3-setuptools python3-pkg-resources
     SHELL
 
    end

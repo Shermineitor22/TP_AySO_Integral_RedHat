@@ -7,10 +7,11 @@ export DEBIAN_FRONTEND=noninteractive
 echo "  Actualiza la lista de paquetes disponibles desde los repositorios"
 sudo apt-get update > /dev/null
 
-echo " Instalo: tree ansible ca-certificates curl"
-sudo apt-get install -y tree ansible ca-certificates curl < /dev/null >  /dev/null
+echo " Instalo: tree ansible ca-certificates curl python3-six python3-pkg-resources python3-pip"
+sudo apt-get install -y tree ansible ca-certificates curl python3-six python3-pkg-resources python3-pip < /dev/null >  /dev/null
 
-
+echo " Actualizo Ansible a una versión moderna mediante pip3"
+sudo pip3 install --upgrade ansible < /dev/null > /dev/null
 
 #----- INSTALACION DE DOCKER SEGUN DOCUMENTACION OFICIAL -----#
 # https://docs.docker.com/engine/install/ubuntu/
