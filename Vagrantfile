@@ -55,6 +55,9 @@ Vagrant.configure("2") do |config|
       vmHost2.vm.hostname = "VM2-Grupo-RedHat"
       vmHost2.vm.network "private_network", ip: "192.168.56.6"
       
+      # Añadimos esta línea para que Fedora también tenga la raíz en /vagrant
+      vmHost2.vm.synced_folder ".", "/vagrant"
+
       # Comparto la carpeta del host donde estoy parado contra la vm
       vmHost2.vm.synced_folder 'compartido/', '/home/vagrant/compartido'
   
