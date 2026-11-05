@@ -95,5 +95,11 @@ Vagrant.configure("2") do |config|
       nmcli connection modify "$NM_CONN" ipv4.addresses 192.168.56.6/24 ipv4.method manual
       nmcli connection up "$NM_CONN"
     SHELL
+
+    # Provisionamiento automático al levantar la máquina
+    vmHost2.vm.provision "shell", inline: <<-SHELL
+      dnf install -y python3-six
+    SHELL
+
    end
 end
