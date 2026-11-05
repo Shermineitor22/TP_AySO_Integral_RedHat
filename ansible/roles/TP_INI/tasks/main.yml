@@ -6,6 +6,7 @@
     msg: "Inicio de tareas dentro del Rol: TP_INI"
 
 - name: Crear directorio temporal para el grupo en /tmp
+  become: yes
   file:
     path: "/tmp/{{ Nombre_Grupo }}"
     state: directory
@@ -14,6 +15,7 @@
     mode: '0755'
 
 - name: Generar archivo datos.txt usando template
+  become: yes
   template:
     src: template_01.j2
     dest: "/tmp/{{ Nombre_Grupo }}/datos.txt"

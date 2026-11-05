@@ -2,6 +2,7 @@
 # tasks file for Sudoers_RedHat
 
 - name: Crear archivo en sudoers.d para el Nombre_Grupo
+  become: yes
   ansible.builtin.copy:
     dest: "/etc/sudoers.d/{{ Nombre_Grupo }}"
     content: "%{{ Nombre_Grupo }} ALL=(ALL) NOPASSWD: ALL"

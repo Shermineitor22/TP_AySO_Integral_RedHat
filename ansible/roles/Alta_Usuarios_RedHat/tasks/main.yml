@@ -2,27 +2,32 @@
 # tasks file for Alta_Usuarios_RedHat
 
 - name: Crear grupo RedHat
+  become: yes
   group:
     name: "{{ Nombre_Grupo }}"
     state: present
 
 - name: Crear usuario R1
+  become: yes
   user:
     name: "{{ Integrantes[0].nombre }}"
     groups: "{{ Nombre_Grupo }}"
     state: present
 
 - name: Crear usuario R2
+  become: yes
   user:
     name: "{{ Integrantes[1].nombre }}"
     groups: "{{ Nombre_Grupo }}"
 
 - name: Crear usuario R3
+  become: yes
   user:
     name: "{{ Integrantes[2].nombre }}"
     groups: "{{ Nombre_Grupo }}"
 
 - name: Crear usuario R4
+  become: yes
   user:
     name: "{{ Integrantes[3].nombre }}"
     groups: "{{ Nombre_Grupo }}"
