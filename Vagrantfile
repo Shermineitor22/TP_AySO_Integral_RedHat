@@ -81,5 +81,16 @@ Vagrant.configure("2") do |config|
     # Puedo Ejecutar un script que esta en un archivo
     vmHost2.vm.provision "shell", path: "configurar_lvm_fedora.sh"
     vmHost2.vm.provision "shell", privileged: false, path: "script_Fix_history.sh"
+
+    # Forzar la IP estática en Fedora mediante NetworkManager automáticamente
+    
+    vmHost2.vm.provision "shell", inline: <<-SHELL
+      NM_CONN=$(nmcli -t -f NAME,DEVICE connection show | grep ':eth1$' | cut -d: -f1)
+      if [ -z "$NM_CONN" ]; then
+        NM_CONN="Wired connection 2"
+      fi
+      nmcli connection modify "$NM_CONN" ipv4.addresses 192.168.56.6/24 ipv4.method manual
+      nmcli connection up "$NM_CONN"
+    SHELL
    end
 end
