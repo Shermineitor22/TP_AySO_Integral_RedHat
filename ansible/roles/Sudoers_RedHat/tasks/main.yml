@@ -1,13 +1,9 @@
 ---
 # tasks file for Sudoers_RedHat
 
-- name: Configurar sudo sin contraseña para un grupo
-  hosts: all
-  become: yes
-  tasks:
-    name: Crear archivo en sudoers.d para el Nombre_Grupo
-    ansible.builtin.copy:
-      dest: "/etc/sudoers.d/{{ Nombre_Grupo }}"
-      content: "%{{ Nombre_Grupo }} ALL=(ALL) NOPASSWD: ALL"
-      mode: '0440'
-      validate: 'visudo -cf %s'  
+- name: Crear archivo en sudoers.d para el Nombre_Grupo
+  ansible.builtin.copy:
+    dest: "/etc/sudoers.d/{{ Nombre_Grupo }}"
+    content: "%{{ Nombre_Grupo }} ALL=(ALL) NOPASSWD: ALL"
+    mode: '0440'
+    validate: 'visudo -cf %s'  

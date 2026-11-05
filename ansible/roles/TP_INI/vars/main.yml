@@ -1,8 +1,8 @@
 ---
 # vars file for TP_INI
 
+Variable_Vars_main: "Ryodan"
 Nombre_Grupo: "RedHat"
-
 Division: "313"
 
 Integrantes:
