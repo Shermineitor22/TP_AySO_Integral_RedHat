@@ -1,0 +1,11 @@
+---
+# vars file for Alta_Usuarios_RedHat
+
+Nombre_Grupo: "RedHat"
+
+Integrantes:
+    - { rol: "R1", nombre: "Maximiliano Ivan", apellido: "Quipildor" }
+    - { rol: "R2", nombre: "Juan Manuel", apellido: "Castro" }
+    - { rol: "R3", nombre: "Mirko Ezequiel", apellido: "Szychowski" }
+    - { rol: "R4", nombre: "Ignacio", apellido: "Tenasczuk" }
+

@@ -1,0 +1,14 @@
+
+Nombre Grupo: {{ Nombre_Grupo }}
+División: {{ Division }}
+Fecha: {{ ansible_date_time.date }}
+-------------------------
+
+Distribución: {{ ansible_distribution }}
+Cantidad de Cores: {{ ansible_processor_vcpus }}
+-------------------------
+
+R1: Nombre: {{ Integrantes[0].Nombre }}    Apellido: {{ Integrantes[0].Apellido }}
+R2: Nombre: {{ Integrantes[1].Nombre }}    Apellido: {{ Integrantes[1].Apellido }}
+R3: Nombre: {{ Integrantes[2].Nombre }}    Apellido: {{ Integrantes[2].Apellido }}
+R4: Nombre: {{ Integrantes[3].Nombre }}    Apellido: {{ Integrantes[3].Apellido }}

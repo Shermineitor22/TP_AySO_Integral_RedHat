@@ -3,7 +3,7 @@ testing
 produccion
 
 [testing]
-127.0.0.1 
+pc-ubuntu
 
 [produccion]
-localhost ansible_connection=local 
+pc-fedora
