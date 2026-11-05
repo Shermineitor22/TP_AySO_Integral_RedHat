@@ -55,6 +55,9 @@ Vagrant.configure("2") do |config|
       vmHost2.vm.hostname = "VM2-Grupo-RedHat"
       vmHost2.vm.network "private_network", ip: "192.168.56.6"
       
+      # Añadimos esta línea para que Fedora también tenga la raíz en /vagrant
+      vmHost2.vm.synced_folder ".", "/vagrant"
+
       # Comparto la carpeta del host donde estoy parado contra la vm
       vmHost2.vm.synced_folder 'compartido/', '/home/vagrant/compartido'
   
@@ -81,5 +84,16 @@ Vagrant.configure("2") do |config|
     # Puedo Ejecutar un script que esta en un archivo
     vmHost2.vm.provision "shell", path: "configurar_lvm_fedora.sh"
     vmHost2.vm.provision "shell", privileged: false, path: "script_Fix_history.sh"
+
+    # Forzar la IP estática en Fedora mediante NetworkManager automáticamente
+    
+    vmHost2.vm.provision "shell", inline: <<-SHELL
+      NM_CONN=$(nmcli -t -f NAME,DEVICE connection show | grep ':eth1$' | cut -d: -f1)
+      if [ -z "$NM_CONN" ]; then
+        NM_CONN="Wired connection 2"
+      fi
+      nmcli connection modify "$NM_CONN" ipv4.addresses 192.168.56.6/24 ipv4.method manual
+      nmcli connection up "$NM_CONN"
+    SHELL
    end
 end
