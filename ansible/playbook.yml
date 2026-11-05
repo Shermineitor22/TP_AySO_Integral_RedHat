@@ -8,19 +8,29 @@
 # become: yes
 
   tasks:
-    - include_role:
-        name: TP_INI
+    -name: Configuracion inicial
+     hosts : testing,produccion
+     become: yes
+     tasks:
+        - name: Ejecutar rol TP_INI
+          include_role:
+              name: TP_INI
 
-    - include_role:
-        name: alta_usuarios_ryodan
+    -name: Alta de usuarios RedHat
+     hosts: produccion
+     become: yes
+     tasks:
+        - name: Ejecutar rol Alta_Usuarios_RedHat
+          include_role:
+            name: Alta_Usuarios_RedHat
 
-    - include_role:
-        name: sudoers_Ryodan
+    -include_role:
+        name: sudoers_RedHat
 
-    - include_role:
-        name: instala_tools_Ryodan
+    -include_role:
+        name: instala_tools_RedHat
 
-    - name: "Otra tarea"
+    -name: "Otra tarea"
       debug:
         msg: "Despues de la ejecucion de los roles"
 

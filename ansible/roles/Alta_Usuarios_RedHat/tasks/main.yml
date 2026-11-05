@@ -1,6 +1,11 @@
 ---
 # tasks file for Alta_Usuarios_RedHat
 
+- name: Crear grupo RedHat
+  group:
+    name: "{{ Nombre_Grupo }}"
+    state: present
+
 - name: Crear usuario R1
   user:
     name: "{{ Integrantes[0].nombre }}"

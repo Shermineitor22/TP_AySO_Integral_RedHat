@@ -1,8 +1,7 @@
 ---
 # vars file for TP_INI
-
+Variable_Vars_main: "RedHat"
 Nombre_Grupo: "RedHat"
-
 Division: "313"
 
 Integrantes:
