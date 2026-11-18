@@ -21,9 +21,9 @@ Vagrant.configure("2") do |config|
       vmHost1.vm.disk :disk, size: "5GB", name: "#{vmHost1.vm.hostname}_extra_storage4"
 
       vmHost1.vm.provider "virtualbox" do |vb|
-        vb.memory = "1024"
+        vb.memory = "2048"
         vb.name = "VM1-Grupo-RedHat"
-        vb.cpus = 1
+        vb.cpus = 2
         vb.linked_clone = true
         # Seteo controladora Grafica
         vb.customize ['modifyvm', :id, '--graphicscontroller', 'vmsvga']      
@@ -72,9 +72,9 @@ Vagrant.configure("2") do |config|
     vmHost2.vm.disk :disk, size: "5GB", name: "#{vmHost2.vm.hostname}_extra_storage4"
 
     vmHost2.vm.provider "virtualbox" do |vb2|
-      vb2.memory = "1024"
+      vb2.memory = "2048"
       vb2.name = "VM2-Grupo-RedHat"
-      vb2.cpus = 1
+      vb2.cpus = 2
       vb2.linked_clone = true
       # Seteo controladora Grafica
       vb2.customize ['modifyvm', :id, '--graphicscontroller', 'vmsvga']
